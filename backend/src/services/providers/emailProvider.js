@@ -1,18 +1,37 @@
-import nodemailer from "nodemailer";
+import { MailtrapClient } from 'mailtrap';
 
-let transporter;
-const getTransporter = () =>
-  (transporter ??= nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "sandbox.smtp.mailtrap.io",
-    port: Number(process.env.SMTP_PORT) || 2525,
-    auth: { user: process.env.MAILTRAP_USER, pass: process.env.MAILTRAP_PASS },
-  }));
+const getClient = () => {
+  const token = process.env.MAILTRAP_TOKEN;
+  if (!token) {
+    throw new Error('MAILTRAP_TOKEN is not set');
+  }
+
+  return new MailtrapClient({
+    token,
+    endpoint: process.env.MAILTRAP_API_ENDPOINT,
+  });
+};
+
+const getSender = () => ({
+  email:
+    process.env.MAILTRAP_SENDER_EMAIL ||
+    process.env.MAIL_FROM ||
+    'hello@demomailtrap.co',
+  name: process.env.MAILTRAP_SENDER_NAME || 'Dovecote',
+});
 
 export async function sendEmail(job) {
-  await getTransporter().sendMail({
-    from: process.env.MAIL_FROM || "Dovecote <no-reply@dovecote.app>",
-    to: job.recipient,
-    subject: job.subject,
+  if (!job?.recipient) {
+    throw new Error('Email recipient is required');
+  }
+
+  const client = getClient();
+
+  return client.send({
+    from: getSender(),
+    to: [{ email: job.recipient }],
+    subject: job.subject || 'Dovecote Notification',
     text: job.message,
+    category: 'dovecote-notification',
   });
 }

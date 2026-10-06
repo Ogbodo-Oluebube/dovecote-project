@@ -4,7 +4,9 @@
   "description": "Dovecote: a notification queue system with retries and delivery tracking",
   "type": "module",
   "main": "src/server.js",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
@@ -18,9 +20,9 @@
     "express-validator": "^7.3.2",
     "helmet": "^7.2.0",
     "jsonwebtoken": "^9.0.3",
+    "mailtrap": "^4.10.0",
     "mongoose": "^8.24.5",
-    "morgan": "^1.12.1",
-    "nodemailer": "^10.0.15"
+    "morgan": "^1.12.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

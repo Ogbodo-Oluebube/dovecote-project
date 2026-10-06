@@ -4,7 +4,7 @@ import app from "./app.js";
 import connectDB from "./config/db.js";
 import { startWorker, stopWorker } from "./services/queueWorker.js";
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 await connectDB(process.env.MONGO_URI);
 startWorker();
