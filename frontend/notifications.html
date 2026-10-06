@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notifications · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="">
+  <header id="nav"></header>
+  <main class="container">
+    <div class="page-head">
+      <h1>Notifications</h1>
+      <a class="btn btn-primary" href="send.html">Send a notification</a>
+    </div>
+
+    <div class="filters">
+      <input id="search" type="search" placeholder="Search recipient or subject" aria-label="Search" />
+      <select id="status" aria-label="Status">
+        <option value="">All statuses</option>
+        <option>pending</option><option>processing</option>
+        <option>sent</option><option>failed</option><option>cancelled</option>
+      </select>
+      <select id="channel" aria-label="Channel">
+        <option value="">All channels</option>
+        <option value="email">Email</option><option value="sms">SMS</option><option value="in_app">In-app</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Recipient</th><th>Channel</th><th>Status</th><th>Attempts</th><th>Created</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <div class="pager">
+      <button class="btn" id="prev" type="button">Previous</button>
+      <span id="page-info" class="muted"></span>
+      <button class="btn" id="next" type="button">Next</button>
+    </div>
+  </main>
+  <script type="module" src="js/pages/notifications.js"></script>
+</body>
+</html>

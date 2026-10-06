@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Log in · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="auth-page">
+  <main class="card auth-card">
+    <a class="brand" href="index.html" id="brand"></a>
+    <h1>Welcome back</h1>
+    <p class="muted">Log in to manage your notification queue.</p>
+    <form id="login-form" novalidate>
+      <label>Email
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label>Password
+        <input type="password" name="password" required autocomplete="current-password" />
+      </label>
+      <button class="btn btn-primary btn-block" type="submit">Log in</button>
+    </form>
+    <p class="muted" style="margin:1rem 0 0">No account yet? <a href="register.html">Register</a></p>
+  </main>
+  <script type="module" src="js/pages/login.js"></script>
+</body>
+</html>

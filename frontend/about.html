@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How it works · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="">
+  <header id="nav"></header>
+  <main class="prose">
+    <h1>How Dovecote works</h1>
+    <p class="muted">A dovecote is where messenger pigeons were kept before they were sent out. Ours does the same for notifications.</p>
+
+    <h2>From request to delivery</h2>
+    <ol>
+      <li>You create a notification: channel, recipient, message, and an optional send time.</li>
+      <li>Dovecote saves it as <strong>pending</strong> and replies immediately. Nothing is sent yet.</li>
+      <li>A background worker picks up due notifications, highest priority first, and marks them <strong>processing</strong>.</li>
+      <li>If delivery works, the notification becomes <strong>sent</strong>. If not, it is retried after a delay.</li>
+      <li>After the last attempt fails, it becomes <strong>failed</strong> and waits for you to retry it.</li>
+    </ol>
+
+    <h2>The retry schedule</h2>
+    <p>Each notification gets 3 attempts. The wait doubles after every failure.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Event</th><th>What happens next</th></tr></thead>
+        <tbody>
+          <tr><td>Attempt 1 fails</td><td>Retry in 10 seconds</td></tr>
+          <tr><td>Attempt 2 fails</td><td>Retry in 20 seconds</td></tr>
+          <tr><td>Attempt 3 fails</td><td>Marked failed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted small" style="margin-top:.75rem">Retrying a failed notification by hand gives it 3 more attempts.</p>
+
+    <h2>Channels</h2>
+    <p><strong>Email</strong> is sent through an SMTP inbox. <strong>SMS</strong> uses a simulated carrier that fails some of the time, so you can watch retries happen. <strong>In-app</strong> notifications appear in the recipient’s Dovecote inbox.</p>
+
+    <h2>Statuses</h2>
+    <p><strong>Pending</strong> is waiting for its turn. <strong>Processing</strong> is being sent right now. <strong>Sent</strong> was delivered. <strong>Failed</strong> ran out of attempts. <strong>Cancelled</strong> was stopped before it was sent.</p>
+    <a class="btn btn-primary" href="register.html">Try it</a>
+  </main>
+  <script type="module" src="js/pages/public.js"></script>
+</body>
+</html>

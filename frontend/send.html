@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Send a notification · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="">
+  <header id="nav"></header>
+  <main class="container narrow">
+    <div class="page-head"><h1>Send a notification</h1></div>
+    <form id="send-form" class="card" novalidate>
+      <div class="segmented" role="radiogroup" aria-label="Channel">
+        <label><input type="radio" name="channel" value="email" checked /><span>Email</span></label>
+        <label><input type="radio" name="channel" value="sms" /><span>SMS</span></label>
+        <label><input type="radio" name="channel" value="in_app" /><span>In-app</span></label>
+      </div>
+
+      <label id="template-row">Template
+        <select id="template"><option value="">Write my own message</option></select>
+      </label>
+      <div id="vars"></div>
+
+      <label><span id="recipient-label">Recipient email</span>
+        <input name="recipient" type="email" required placeholder="ada@example.com" />
+      </label>
+
+      <div id="subject-row">
+        <label>Subject
+          <input name="subject" maxlength="150" />
+        </label>
+      </div>
+
+      <div id="message-row">
+        <label>Message
+          <textarea name="message" maxlength="2000"></textarea>
+          <span class="hint"><span id="count">0</span> / 2000</span>
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>Send at
+          <input type="datetime-local" name="scheduledFor" />
+          <span class="hint">Leave empty to send as soon as possible.</span>
+        </label>
+        <label>Priority
+          <select name="priority">
+            <option value="0">Normal</option>
+            <option value="1">High</option>
+            <option value="2">Urgent</option>
+          </select>
+          <span class="hint">Urgent notifications are sent first.</span>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Queue notification</button>
+        <a class="btn" href="notifications.html">Cancel</a>
+      </div>
+    </form>
+  </main>
+  <script type="module" src="js/pages/send.js"></script>
+</body>
+</html>

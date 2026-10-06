@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reliable notification delivery · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="">
+  <header id="nav"></header>
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Every message gets delivered. Or gets another try.</h1>
+        <p class="lead">Dovecote queues your emails, SMS and in-app notifications, sends them in the background, and retries the ones that fail, so a provider outage never means a lost message.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="register.html">Create a free account</a>
+          <a class="btn btn-lg" href="about.html">See how retries work</a>
+        </div>
+      </div>
+
+      <div class="card hero-demo" aria-label="Example of one notification being retried until it is delivered">
+        <div class="demo-head">
+          <strong>+234 801 234 5678</strong>
+          <span class="badge badge-sent">sent</span>
+        </div>
+        <p class="muted small">SMS · “Your order has shipped”</p>
+        <ol class="timeline demo">
+          <li class="tl-item failed" style="--i:0"><span class="tl-dot"></span>
+            <div class="tl-title">Attempt 1 failed</div>
+            <div class="tl-error">Carrier timeout</div>
+            <div class="tl-meta">Retrying in 10 seconds</div></li>
+          <li class="tl-item failed" style="--i:1"><span class="tl-dot"></span>
+            <div class="tl-title">Attempt 2 failed</div>
+            <div class="tl-error">Number unreachable</div>
+            <div class="tl-meta">Retrying in 20 seconds</div></li>
+          <li class="tl-item success" style="--i:2"><span class="tl-dot"></span>
+            <div class="tl-title">Attempt 3 delivered</div>
+            <div class="tl-meta">No one had to do anything</div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="band-inner">
+        <div><h3>Accepted instantly</h3><p>Your request is saved and answered straight away. Slow providers never keep your users waiting.</p></div>
+        <div><h3>Sent in the background</h3><p>A worker delivers notifications on schedule, highest priority first, one at a time.</p></div>
+        <div><h3>Retried, then reported</h3><p>Failed sends are retried with growing delays. If they still fail, you see exactly why.</p></div>
+      </div>
+    </section>
+
+    <section class="audience">
+      <h2>Built for developers and small teams</h2>
+      <p class="muted">If you send order updates, reminders or alerts and can’t afford to lose them, Dovecote gives you one place to queue them, schedule them, and check what happened to each one.</p>
+      <a class="btn btn-primary" href="register.html">Send your first notification</a>
+    </section>
+  </main>
+  <footer class="site-footer">Dovecote · TS Academy Capstone Project</footer>
+  <script type="module" src="js/pages/public.js"></script>
+</body>
+</html>

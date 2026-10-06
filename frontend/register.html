@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create account · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="auth-page">
+  <main class="card auth-card">
+    <a class="brand" href="index.html" id="brand"></a>
+    <h1>Create your account</h1>
+    <p class="muted">Start queueing notifications in a minute.</p>
+    <form id="register-form" novalidate>
+      <label>Name
+        <input name="name" required autocomplete="name" />
+      </label>
+      <label>Email
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label>Password
+        <input type="password" name="password" required minlength="8" autocomplete="new-password" />
+        <span class="hint">At least 8 characters.</span>
+      </label>
+      <label>Confirm password
+        <input type="password" name="confirm" required autocomplete="new-password" />
+      </label>
+      <button class="btn btn-primary btn-block" type="submit">Create account</button>
+    </form>
+    <p class="muted" style="margin:1rem 0 0">Already registered? <a href="login.html">Log in</a></p>
+  </main>
+  <script type="module" src="js/pages/register.js"></script>
+</body>
+</html>

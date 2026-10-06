@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard · Dovecote</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="">
+  <header id="nav"></header>
+  <main class="container">
+    <div class="page-head">
+      <div>
+        <h1 id="greeting">Dashboard</h1>
+        <p class="muted" style="margin:0">Live view of your queue. Updates every 5 seconds.</p>
+      </div>
+      <a class="btn btn-primary" href="send.html">Send a notification</a>
+    </div>
+
+    <div id="failed-alert" class="alert" hidden></div>
+
+    <div class="stats" id="stats"><div class="center card" style="grid-column:1/-1"><span class="spinner"></span>Loading…</div></div>
+
+    <div class="card" style="margin-top:1rem">
+      <h3>Where your notifications are</h3>
+      <div id="split"></div>
+    </div>
+
+    <div class="section-head">
+      <h2>Latest activity</h2>
+      <a href="notifications.html">View all</a>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Recipient</th><th>Channel</th><th>Status</th><th>Attempts</th><th>Created</th><th></th></tr></thead>
+        <tbody id="recent"></tbody>
+      </table>
+    </div>
+  </main>
+  <script type="module" src="js/pages/dashboard.js"></script>
+</body>
+</html>
